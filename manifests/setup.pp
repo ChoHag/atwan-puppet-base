@@ -36,5 +36,5 @@ class base::setup(
 	proxy_url => '',
       }
     }
-
+  }
 }
