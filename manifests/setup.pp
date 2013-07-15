@@ -18,11 +18,11 @@ class base::setup(
       ensure  => file,
       content => template('base/environment.erb');
     }
-  }
 
-  if $::osfamily == 'Debian' {
-    class { "apt::proxy":
-      proxy_url => $http_proxy,
+    if $::osfamily == 'Debian' {
+      class { "apt::proxy":
+	proxy_url => $http_proxy,
+      }
     }
   }
 }
