@@ -13,4 +13,10 @@ class base::params {
 
   $install_packages_extra = [ ]
   $remove_packages_extra  = [ ]
+
+  if $::http_proxy {
+    $http_proxy = $::http_proxy
+  } else {
+    $http_proxy = 'UNDEFINED'
+  }
 }
