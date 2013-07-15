@@ -19,4 +19,10 @@ class base::setup(
       content => template('base/environment.erb');
     }
   }
+
+  if $::osfamily == 'Debian' {
+    class { "apt::proxy":
+      proxy_url => $http_proxy,
+    }
+  }
 }
