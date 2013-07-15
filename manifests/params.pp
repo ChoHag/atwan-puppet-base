@@ -14,6 +14,9 @@ class base::params {
   $install_packages_extra = [ ]
   $remove_packages_extra  = [ ]
 
+  $apt_sources = 'UNDEFINED'
+  $yum_sources = 'UNDEFINED'
+
   if $::http_proxy {
     $http_proxy = $::http_proxy
   } else {
