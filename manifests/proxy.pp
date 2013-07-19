@@ -4,7 +4,7 @@ class base::proxy {
   case $::osfamily {
     debian: {
       class { "apt::proxy":
-	proxy_url => $base_http_proxy,
+	proxy_url => $http_proxy,
       }
     }
   }
