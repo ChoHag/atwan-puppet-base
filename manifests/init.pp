@@ -4,7 +4,7 @@ class base(
   $install_packages_extra = params_lookup('install_packages_extra', 'global'),
   $remove_packages_extra  = params_lookup('remove_packages_extra',  'global'),
 ) inherits base::params {
-  if $install_packages_extra != 'UNDEFINED' {
+  if $install_packages != 'UNDEFINED' {
     package { $base::install_packages:
       ensure => installed;
     }
