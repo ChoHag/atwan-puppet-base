@@ -1,21 +1,31 @@
 class base(
-  $install_packages       = $base::params::install_packages,
-  $remove_packages        = $base::params::remove_packages,
-  $install_packages_extra = $base::params::install_packages_extra,
-  $remove_packages_extra  = $base::params::remove_packages_extra
+  $install_packages       = params_lookup('install_packages',       'global'),
+  $remove_packages        = params_lookup('remove_packages',        'global'),
+  $install_packages_extra = params_lookup('install_packages_extra', 'global'),
+  $remove_packages_extra  = params_lookup('remove_packages_extra',  'global'),
 ) inherits base::params {
-  package {
-    $install_packages:
+  if $install_packages_extra != 'UNDEFINED' {
+    package { $base::install_packages:
       ensure => installed;
+    }
+  }
 
-    $install_packages_extra:
+  if $base::install_packages_extra != 'UNDEFINED' {
+    package { $base::install_packages_extra:
       ensure => installed;
+    }
+  }
 
-    $remove_packages:
+  if $base::remove_packages != 'UNDEFINED' {
+    package { $base::remove_packages:
       ensure => purged;
+    }
+  }
 
-    $remove_packages_extra:
+  if $base::remove_packages_extra != 'UNDEFINED' {
+    package { $base::remove_packages_extra:
       ensure => purged;
+    }
   }
 
   class { "puppet": }
