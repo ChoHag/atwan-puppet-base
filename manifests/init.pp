@@ -3,6 +3,7 @@ class base(
   $remove_packages        = params_lookup('remove_packages',        'global'),
   $install_packages_extra = params_lookup('install_packages_extra', 'global'),
   $remove_packages_extra  = params_lookup('remove_packages_extra',  'global'),
+  $with_puppet            = params_lookup('with_puppet',            'global'),
 ) inherits base::params {
   if $install_packages != 'UNDEFINED' {
     package { $base::install_packages:
@@ -28,5 +29,7 @@ class base(
     }
   }
 
-  class { "puppet": }
+  if $with_puppet {
+    class { "puppet": }
+  }
 }

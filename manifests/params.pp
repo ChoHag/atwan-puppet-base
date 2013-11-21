@@ -18,4 +18,6 @@ class base::params {
   $yum_sources = 'UNDEFINED'
 
   $http_proxy  = 'UNDEFINED'
+
+  $with_puppet = true
 }
